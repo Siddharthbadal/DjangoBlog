@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block page-title %}  Contact{% endblock %}
+{% block content %}
+<style>
+
+  form > input,
+  form > textarea {
+    padding: 12px;
+    margin: 12px auto;
+    border: 1px solid #ccc;
+    color: white;
+    background-color: #315b68;
+    border-radius: 4px;
+    display: block;
+    width: 50vw;
+    font-size:16px;
+  }
+
+  form > textarea{
+    height:100px;
+    resize:none;
+  }
+
+  form > input[type="submit"] {
+    max-width: 20vw;
+    padding-left: 1%;
+    padding-right: 1%;
+    cursor: pointer;
+    transition: 0.35s;
+  }
+
+  form > input[type="submit"]:hover {
+    font-weight:bolder;
+  }
+  h1{
+      text-align:center;
+      margin: 25px 0;
+  }
+  ::placeholder{
+      color:ghostwhite;
+  }
+</style>
+<h1>Contact</h1>
+<form>
+  <input type="text" placeholder="Name " required>
+  <input type="text" placeholder=" Email " required>
+  <input type="text" placeholder="Subject " required>
+  <textarea placeholder="Message " required></textarea>
+  <input type="submit" value="Send">
+</form>
+
+{% endblock content %}

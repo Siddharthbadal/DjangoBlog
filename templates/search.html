@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block page-title %}  Search{% endblock %}
+{% block content %}
+
+
+
+<div class="container">
+  <div class="row">
+  <div class="col-md-8 mt-3 left mx-auto">
+
+{% if q %}
+    <h1 class='text-center'>Posts contaning "{{q}}"</h1>
+    <p class='text-center'>
+    {% with results.count as total_results %}
+    Found {{ total_results }} result{{total_results|pluralize}}!
+    {% endwith %}
+    </p>
+
+    <!-- Blog Entries Column -->
+      {% for post in results %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <a href='{% url 'post_detail' post.slug  %}' style="text-decoration:None;color:#315b68;"><h2 class="card-title">{{ post.title }}</h2></a>
+          <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}}  </p>
+          
+          <p class="card-text">{{post.content|safe|slice:":200" }}</p>
+          <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary float-right" style="background:#315b68">Read More &rarr;</a>
+        </div>
+
+      </div>
+      
+      {% endfor %}
+
+
+
+{% elif not q %}
+    <h5>There are no results fo your query.</h5>
+
+{% endif %}
+
+
+    </div>
+{% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+
+ </div>
+
+</div>
+
+{% endblock content%}

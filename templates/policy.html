@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block page-title %}  Policy{% endblock %}
+{% block content %}
+
+<div class="col-md-8 mx-auto">
+
+    <div class="card my-4">
+        
+        <div class="card-body">
+        {% for tab in aboutblog %}
+        <div class="float-right mb-4 ml-4" >
+        <img  src="{{tab.image.url}}" alt="Siddharth" style="width:150px;">
+        </div>
+            <p class="card-text">{{tab.policy | safe}} </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

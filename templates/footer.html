@@ -1,0 +1,125 @@
+<footer class="bg-ligh text-center text-lg-start border">
+  <!-- Grid container -->
+  <div class="mt-5 container-flex">
+    <!--Grid row-->
+
+    <div class="row">  
+      <!--Grid column-->
+    {% for f in footer %}
+      <div class="col-lg-5 col-md-5 mb-4 mb-md-0 ml-4" >
+        <h5 class="text-left ">About</h5>
+
+        <p class="text-left" >
+            {{f.about |safe}}
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+
+       <div class="col-lg-2 col-md-2 mb-4 mb-md-0 ">
+        <h5>{{f.categories |safe}}</h5>
+
+        <ul class="list-unstyled mb-0">
+          {% comment %} <li class='mb-1'>
+            <a href="{% url "aboutus" %}" class="text-dark ">About</a>
+          </li> {% endcomment %}
+          {% for c in all_category %}
+          <li class='mb-1 '>
+            <a href="{% url "category" c|slugify %}" class="text-dark">{{c.name}}</a>
+          </li>
+          {% endfor %}
+          
+        </ul>
+      </div>
+
+       <!--Grid column-->
+
+       <div class="col-lg-2 col-md-2 mb-4 mb-md-0">
+        <h5>{{f.pages |safe}}</h5>
+
+        <ul class="list-unstyled mb-0">
+           <li class='mb-1'>
+            <a href="{% url "aboutus" %}" class="text-dark ">About</a>
+          </li> 
+           <li class='mb-1'>
+            <a href="{% url "contact" %}" class="text-dark ">Contact</a>
+          </li> 
+           <li class='mb-1'>
+            <a href="{% url "disclaimer" %}" class="text-dark ">Disclaimer</a>
+          </li> 
+           <li class='mb-1'>
+            <a href="{% url "policy" %}" class="text-dark ">Privacy Policy</a>
+          </li> 
+
+        </ul>
+      </div>
+      <!--Grid column-->
+
+
+       <div class="col-lg-2 col-md-2 mb-4 mb-md-0 ">
+        <h5 class="">{{f.Connect |safe}}</h5>
+
+          <ul class="list-unstyled mb-0">
+          <li>
+              <a class="btn btn-link btn-floating btn-sm text-dark" href="#!"
+              role="button"
+              data-mdb-ripple-color="dark">
+              <i class="fab fa-twitter"></i>
+
+              </a>
+          </li>
+          <li>
+            <a
+              class="btn btn-link btn-floating btn-sm text-dark"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark">
+              <i class="fab fa-google"></i>
+            </a>
+          </li>
+          <li>
+            <a class="btn btn-link btn-floating btn-sm text-dark"
+            href="#!" role="button"
+            data-mdb-ripple-color="dark">
+            <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a class="btn btn-link btn-floating btn-sm text-dark"
+        href="#!" role="button"
+        data-mdb-ripple-color="dark">
+        <i class="fab fa-linkedin"></i>
+            </a>
+          </li>
+           </ul>
+
+      
+      
+      </div>
+    {% endfor %}
+    
+    </div>
+
+    <div class='col-lg-1 col-md-1  float-right' style="bottom: 50px;right:0;background:white;">
+    <button id="scrollToTopBtn" style="width:50px; border:None;">  ☝️</button>
+  
+  </div>
+    
+    </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center bg-light footer" style="position:relative;">
+    ©2020 Copyright:
+    <a class="text-dark" href="https://www.twitter.com/siddbadal" style="font-weight: 600;
+      text-decoration: none;">Siddharth</a>
+
+    
+
+  </div>
+  <!-- Copyright -->
+
+
+</footer>
+

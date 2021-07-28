@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% block page-title %}  Disclaimer{% endblock %}
+
+{% block content %}
+
+<div class="col-md-8 mx-auto">
+
+    <div class="card my-4">
+        
+        <div class="card-body">
+        {% for tab in disclaimer %}
+        <div class="float-right mb-4 ml-4" >
+        <img  src="{{tab.image.url}}" alt="Siddharth" style="width:150px;">
+        </div>
+            <p class="card-text">{{tab.disclaimer | safe}} </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

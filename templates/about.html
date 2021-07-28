@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+
+   {% block page-title %}  About{% endblock %}
+
+
+
+{% block content %}
+
+<div class="col-md-8 mx-auto">
+
+    <div class="card my-4">
+        
+        <div class="card-body">
+        {% for tab in obj %}
+        <div class="float-right mb-4 ml-4" >
+        <img  src="https://drive.google.com/uc?id=1ZU5CKPYq6Is6TQfPdC8Dly1M5NpWmrCD" alt="Siddharth" style="width:150px;">
+        </div>
+            <p class="card-text">{{tab.description |safe}} </p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
