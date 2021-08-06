@@ -1,27 +1,12 @@
 {% extends "base.html" %}
+{% load text_filter %}
+
 {% block page-title %}  Home{% endblock %}
 {% block content %}
 
 
-{% comment %} <header class="masthead"style="background:#315b68">
-  <div class="overlay"></div>
-  <div class="container" >
-    <div class="row">
-      <div class=" col-md-8 col-md-10 mx-auto">
-        <div class="site-heading">
-          <h2 class=" site-heading my-4 mt-3 text-white text-center"> Python Points </h2>
-          <h4 class="text-light text-center"> Python | Data Analysis | Django | Web Scraping | Data Science
-          
-          </h4>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-</header> {% endcomment %}
-<style>
 
-</style>
+
 <div class="container">
   <div class="row">
 
@@ -30,16 +15,19 @@
       {% for post in post_list %}
       <div class="card mb-4 main-card">
         <div class="card-body ">
-          <a href='{% url 'post_detail' post.slug  %}' style="text-decoration:None;color:#315b68;"><h2 class="card-title">{{ post.title |safe}}</h2>
+          <a href='{% url 'post_detail' post.slug  %}' style="text-decoration:None;color:#315b68;"><h2 class="card-title">{{ post.title|safe}}</h2>
 
           </a>
-          {% comment %} <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}}  </p> {% endcomment %}
+          
           <p>
           {% for tag in post.tags.all %}
            <button class='btn btn-info btn-sm' ><a class='text-white' href="{% url 'posts_by_tag' tag.slug %}" style="text-decoration:none;">{{tag.name}}</a></button>
         {% endfor %}
           </p>
-          <p class="card-text">{{post.content|safe|slice:":200" }}</p>
+          {% with post.content|mytextsplit:". " as parts %}
+          <p class="card-text">
+          {{parts.0 |safe }}</p>
+          {% endwith %}
           <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary float-right btn-sm" style="background:#315b68;border:1px solid #315b68;">Read More &rarr;</a>
         </div>
 

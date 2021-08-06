@@ -5,7 +5,6 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Aboutblog(models.Model):
-    image = models.ImageField(upload_to='media')
     about = RichTextUploadingField(config_name='custom',blank=True, null=True)
     disclaimer = RichTextUploadingField(config_name='custom',blank=True, null=True)
     policy = RichTextUploadingField(config_name='custom',blank=True, null=True)

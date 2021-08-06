@@ -41,12 +41,19 @@
   }
 </style>
 <h1>Contact</h1>
-<form>
-  <input type="text" placeholder="Name " required>
-  <input type="text" placeholder=" Email " required>
-  <input type="text" placeholder="Subject " required>
-  <textarea placeholder="Message " required></textarea>
-  <input type="submit" value="Send">
+<form class='form-group' method="POST">
+  {% csrf_token %}
+  <input name='name' type="text" placeholder="Name " required autocomplete = 'off'>
+  <input name='email' type="text" placeholder=" Email" required autocomplete = 'off'>
+  <input name='subject' type="text" placeholder="Subject" autocomplete = 'off'>
+  <textarea name='message' placeholder="Message " required autocomplete = 'off'></textarea>
+  <input type="submit" value="Send" onclick="submitalert()">
 </form>
-
+<script>
+  function submitalert(){
+  swal("Thank you for the message!")
+.then((value) => {
+  
+})};
+  </script>
 {% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from .models import Aboutblog, Contact, Footer
 
 
@@ -25,8 +25,16 @@ def disclaimers(request):
     return render(request, 'disclaimer.html', context)
 
 def contact(request):
-    contact = Contact.objects.all()
-    context = {
-        'contact':contact
-    }
-    return render(request, 'contact.html', context)
+    if request.method=="POST":
+        contact = Contact()
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        subject=request.POST.get('subject')
+        message=request.POST.get('message')
+        contact.name = name
+        contact.email=email
+        contact.subject=subject
+        contact.message=message
+        contact.save()
+        return render(request, 'contact.html')       
+    return render(request, 'contact.html')

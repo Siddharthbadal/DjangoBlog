@@ -1,5 +1,5 @@
 {% extends 'base.html'%}
-
+{% load text_filter %}
 
 {% block page-title %}  {{category.name}}{% endblock %}
 {% block content %}
@@ -41,14 +41,18 @@
 
     <!-- Blog Entries Column -->
     <div class="col-md-8 mt-3 left mx-auto">
-    <h2>{{category.name}}</h2>
+    <h1 style='text-align:center;color:#315b68'>{{category.name}}</h1>
       {% for post in category.posts.all %}
       <div class="card mb-4">
         <div class="card-body">
           <a href='{% url 'post_detail' post.slug  %}' style="text-decoration:None;color:#315b68;"><h2 class="card-title">{{ post.title }}</h2></a>
           <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}}  </p>
 
-          <p class="card-text">{{post.content|safe|slice:":200" }}</p>
+          {% with post.content|mytextsplit:". " as parts %}
+          <p class="card-text">
+          {{parts.0 |safe }}</p>
+          {% endwith %}
+          
           <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary float-right" style="background:#315b68">Read More &rarr;</a>
         </div>
       </div>
