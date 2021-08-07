@@ -41,13 +41,13 @@
   }
 </style>
 <h1>Contact</h1>
-<form class='form-group' method="POST">
+<form class='form-group' method="POST" onsubmit='submitalert()'>
   {% csrf_token %}
   <input name='name' type="text" placeholder="Name " required autocomplete = 'off'>
   <input name='email' type="text" placeholder=" Email" required autocomplete = 'off'>
   <input name='subject' type="text" placeholder="Subject" autocomplete = 'off'>
   <textarea name='message' placeholder="Message " required autocomplete = 'off'></textarea>
-  <input type="submit" value="Send" onclick="submitalert()">
+  <input type="submit" value="Send" >
 </form>
 <script>
   function submitalert(){
